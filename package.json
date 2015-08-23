@@ -1,0 +1,39 @@
+{
+  "name": "node-matrix-bundler-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to generate file bundles for import into Squiz Matrix systems",
+  "main": "index.js",
+  "bin": {
+    "matrix-bundler": "index.js"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshgillies/node-matrix-bundler-cli.git"
+  },
+  "keywords": [
+    "matrix",
+    "mysource",
+    "my",
+    "source",
+    "squiz",
+    "bundle",
+    "assets"
+  ],
+  "author": "Josh Gillies <npm@joshgilli.es> (http://joshgilli.es/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshgillies/node-matrix-bundler-cli/issues"
+  },
+  "homepage": "https://github.com/joshgillies/node-matrix-bundler-cli#readme",
+  "dependencies": {
+    "minimist": "^1.1.3",
+    "node-matrix-bundler": "^1.0.0",
+    "readdirp": "^1.4.0"
+  },
+  "devDependencies": {
+    "standard": "^5.1.0"
+  }
+}
