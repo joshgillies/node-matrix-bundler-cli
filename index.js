@@ -46,8 +46,7 @@ function cli (opts) {
     })
 }
 
-console.log(argv)
-if (argv.h || argv.help) {
+if (!argv._.length || argv.h || argv.help) {
   console.log(help())
 } else {
   cli({
