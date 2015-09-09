@@ -9,7 +9,7 @@ function help () {
     '',
     'Options:',
     '  --help, -h           show help message',
-    '  --entry, -e          the enrty point for bundler, default "."',
+    '  --entry, -e          the entry point for bundler, default "."',
     '  --output, -o         the exported file bundle, default "./bundle.tgz"',
     '  --parent, -p         an asset id to import the files under, default "1"',
     '  --link, -l           the link type all assets will be imported as, default "TYPE_1"',
