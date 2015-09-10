@@ -2,6 +2,10 @@
 
 var argv = require('minimist')(process.argv.slice(2))
 
+function version () {
+  return require('./package.json').version
+}
+
 function help () {
   return [
     'Usage:',
@@ -9,6 +13,7 @@ function help () {
     '',
     'Options:',
     '  --help, -h           show help message',
+    '  --version, -v        show version information',
     '  --entry, -e          the entry point for bundler, default "."',
     '  --output, -o         the exported file bundle, default "./bundle.tgz"',
     '  --parent, -p         an asset id to import the files under, default "1"',
@@ -72,7 +77,9 @@ function cli (opts) {
     })
 }
 
-if (!argv._.length || argv.h || argv.help) {
+if (argv.version || argv.v) {
+  console.log(version())
+} else if (!argv._.length || argv.h || argv.help) {
   console.log(help())
 } else {
   cli({
