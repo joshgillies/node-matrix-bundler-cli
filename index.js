@@ -76,8 +76,8 @@ if (!argv._.length || argv.h || argv.help) {
   console.log(help())
 } else {
   cli({
-    entry: argv._[0] || argv.entry || argv.e || './',
-    output: argv._[1] || argv.output || argv.o || './bundle.tgz',
+    entry: argv.entry || argv.e || argv._[0] || './',
+    output: argv.output || argv.o || argv._[1] || './bundle.tgz',
     rootNode: argv.parent || argv.p,
     linkType: argv.link || argv.l,
     unrestricted: argv.unrestricted || argv.u
