@@ -24,9 +24,35 @@ function help () {
 function cli (opts) {
   var readdirp = require('readdirp')
   var Bundler = require('node-matrix-bundler')
+  var writer = require('node-matrix-importer')()
+  var path = require('path')
   var fs = require('fs')
 
+  if (!opts.rootNode) {
+    opts.rootNode = writer.createAsset({
+      type: 'folder'
+    }).id
+
+    writer.setAttribute({
+      assetId: opts.rootNode,
+      attribute: 'name',
+      value: path.basename(path.resolve(__dirname, opts.entry))
+    })
+
+    writer.setAttribute({
+      assetId: opts.rootNode,
+      attribute: 'short_name',
+      value: path.basename(path.resolve(__dirname, opts.entry))
+    })
+
+    writer.addPath({
+      assetId: opts.rootNode,
+      path: path.basename(path.resolve(__dirname, opts.entry))
+    })
+  }
+
   var bundle = Bundler({
+    writer: writer,
     globalLinkType: opts.linkType,
     globalRootNode: opts.rootNode,
     globalUnrestricted: opts.unrestricted
