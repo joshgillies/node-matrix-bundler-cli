@@ -1,6 +1,9 @@
 # node-matrix-bundler-cli
 
-CLI tool to generate file bundles for import into Squiz Matrix systems
+CLI tool to generate file bundles for import into Squiz Matrix systems.
+
+[![Build Status](https://travis-ci.org/joshgillies/node-matrix-bundler-cli.svg)](https://travis-ci.org/joshgillies/node-matrix-bundler-cli)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
 ## Install
 
