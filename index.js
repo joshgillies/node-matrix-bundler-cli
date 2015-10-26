@@ -41,7 +41,7 @@ function cli (opts) {
     globalUnrestricted: opts.unrestricted
   })
   var entries = readdirp({
-    root: path.resolve(__dirname, opts.entry),
+    root: path.resolve(process.cwd(), opts.entry),
     fileFilter: ['!.*'], // ignore hidden files
     directoryFilter: opts.recursive ? ['!.*'] : ['!.*', '!*'], // ignore hidden folders
     entryType: 'both'
