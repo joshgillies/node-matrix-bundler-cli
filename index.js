@@ -20,6 +20,7 @@ function help () {
     '  --parent, -p         an asset id to import the files under, default "1"',
     '  --link, -l           the link type all assets will be imported as, default "TYPE_1"',
     '  --unrestricted, -u   whether unrestricted access is allowed, default "false"',
+    '  --verbose, -v        whether to print bundler activity, default "false"',
     '',
     'Examples:',
     '  matrix-bundler ./files ./files.tgz',
@@ -46,6 +47,7 @@ function cli (opts) {
     directoryFilter: opts.recursive ? ['!.*'] : ['!.*', '!*'], // ignore hidden folders
     entryType: 'both'
   })
+  var output = opts.verbose ? console.log : function noop () {}
   var folders = {}
 
   entries
@@ -64,6 +66,7 @@ function cli (opts) {
       opts['parentId'] = folders[fullParentDir]
 
       if (entry.stat.isFile()) {
+        output(fullPath)
         bundle.add(fullPath, opts)
       }
     })
@@ -105,6 +108,7 @@ if (argv.version || argv.v) {
     recursive: argv.recursive || argv.r,
     rootNode: argv.parent || argv.p,
     linkType: argv.link || argv.l,
-    unrestricted: argv.unrestricted || argv.u
+    unrestricted: argv.unrestricted || argv.u,
+    verbose: argv.verbose || argv.v
   })
 }
