@@ -73,7 +73,6 @@ function cli (opts) {
       }
     })
     .on('end', function bundle () {
-      console.log(opts)
       if (opts.lint) {
         linter(writer.toString())
           .on('notice', function (notice) {
