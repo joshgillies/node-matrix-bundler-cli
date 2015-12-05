@@ -31,6 +31,7 @@
   "dependencies": {
     "minimist": "^1.2.0",
     "node-matrix-bundler": "^1.0.0",
+    "node-matrix-import-xml-linter": "github:joshgillies/node-matrix-import-xml-linter",
     "node-matrix-importer": "^1.1.1",
     "readdirp": "^1.4.0",
     "xml2js": "^0.4.15"

@@ -30,7 +30,6 @@ function help () {
 }
 
 function cli (opts) {
-  var EventEmitter = require('events').EventEmitter
   var readdirp = require('readdirp')
   var Bundler = require('node-matrix-bundler')
   var writer = require('node-matrix-importer')({ sorted: true })
@@ -74,39 +73,17 @@ function cli (opts) {
     })
     .on('end', function bundle () {
       if (opts.lint) {
-        linter(writer.toString())
-          .on('notice', function (notice) {
-            console.log(notice)
-          })
+        var linter = require('node-matrix-import-xml-linter')()
+        linter
+          .on('notice', console.log)
           .on('end', function () {
             createBundle(opts.output)
           })
+          .lint(writer.toString())
       } else {
         createBundle(opts.output)
       }
     })
-
-  function linter (source) {
-    var parseString = require('xml2js').parseString
-    var emitter = new EventEmitter()
-
-    parseString(source, function (err, result) {
-      // if there's an error here, something is seriously wrong
-      if (err) throw err
-
-      result.actions.action.forEach(function (action) {
-        if (action.action_type[0] === 'create_asset') {
-          if (action.parentid && action.parentid[0] === '1') {
-            emitter.emit('notice', 'Top most root node (#1) in use.')
-          }
-        }
-      })
-
-      emitter.emit('end')
-    })
-
-    return emitter
-  }
 
   function createBundle (output) {
     bundle.createBundle()
